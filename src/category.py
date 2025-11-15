@@ -13,3 +13,5 @@ class Category:
         Category.product_count += len(products) if products else 0
 
 
+def products():
+    return None
