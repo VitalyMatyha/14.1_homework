@@ -9,3 +9,8 @@ class Product:
         self.description = description
         self.price = price
         self.quantity =quantity
+
+    @classmethod
+    def new_product(cls, data: dict):
+        # распаковываем словарь прямо в конструктор
+        return cls(**data)

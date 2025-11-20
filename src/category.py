@@ -26,6 +26,17 @@ class Category:
     def products(self):
         return self.__products.copy()
 
+    @property
+    def products_info(self):
+        """Возвращает список товаров в виде строк."""
+        info_list = []
+        for product in self.__products:
+            info_list.append(
+                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
+            )
+        return info_list
+
+
 
 
 
