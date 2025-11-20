@@ -8,12 +8,15 @@ class Category:
     product_count = 0
 
 
-    def __init__(self, name, description ):
+    def __init__(self, name, description, products=None ):
         self.name = name
         self.description = description
         self.__products = [] #всегда пустой приватный
         Category.category_count += 1
 
+        if products:
+            for product in products:
+                self.add_product(product)
 
     def add_product(self, product):
         if not isinstance(product, Product):
