@@ -1,3 +1,5 @@
+from src.product import Product
+
 class Category:
     name: str
     description: str
@@ -5,13 +7,42 @@ class Category:
     category_count = 0
     product_count = 0
 
+
     def __init__(self, name, description, products=None ):
         self.name = name
         self.description = description
-        self.products = products if products else []
+        self.__products = [] #всегда пустой приватный
         Category.category_count += 1
-        Category.product_count += len(products) if products else 0
+
+        if products:
+            for product in products:
+                self.add_product(product)
+
+    def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты класса Product")
+
+        self.__products.append(product)
+        Category.product_count += 1
+
+    @property
+    def products(self):
+        return self.__products.copy()
+
+    @property
+    def products_info(self):
+        """Возвращает список товаров в виде строк."""
+        info_list = []
+        for product in self.__products:
+            info_list.append(
+                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
+            )
+        return info_list
 
 
-def products():
-    return None
+
+
+
+
+
+
