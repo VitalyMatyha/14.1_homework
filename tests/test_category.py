@@ -1,7 +1,9 @@
-from src import category
 import pytest
+
+from src import category
 from src.category import Category
 from src.product import Product
+
 
 def test_category_init(category1, category2):
     assert category1.name == "Смартфоны"
