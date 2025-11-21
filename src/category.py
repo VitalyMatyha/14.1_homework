@@ -35,10 +35,3 @@ class Category:
             f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт."
             for p in self.__products
         ]
-
-
-
-
-
-
-

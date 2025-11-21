@@ -3,15 +3,14 @@ from src.product import Product
 
 if __name__ == "__main__":
     # Создание продуктов
-    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product1 = Product(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
+    )
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 
     # Создание категории
-    category1 = Category(
-        "Смартфоны",
-        "Современные смартфоны для любых задач"
-    )
+    category1 = Category("Смартфоны", "Современные смартфоны для любых задач")
 
     # Добавление продуктов в категорию
     category1.add_product(product1)
@@ -32,12 +31,14 @@ if __name__ == "__main__":
     print(Category.product_count)
 
     # Создание товара через classmethod
-    new_product = Product.new_product({
-        "name": "Наушники Sony WH-1000XM5",
-        "description": "Беспроводные, шумоподавление",
-        "price": 39000.0,
-        "quantity": 4
-    })
+    new_product = Product.new_product(
+        {
+            "name": "Наушники Sony WH-1000XM5",
+            "description": "Беспроводные, шумоподавление",
+            "price": 39000.0,
+            "quantity": 4,
+        }
+    )
 
     print("\nСоздан новый товар через classmethod:")
     print(new_product.name)
