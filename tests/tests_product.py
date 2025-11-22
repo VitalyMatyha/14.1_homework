@@ -1,7 +1,7 @@
 from src.product import Product
 
 
-def test_product_init(product1, cproduct2):
+def test_product_init(product1, product2):
     # Используем product1, а не несуществующую переменную product
     assert product1.name == "Samsung Galaxy S23 Ultra"
     assert product1.description == "256GB, Серый цвет, 200MP камера"
