@@ -18,6 +18,10 @@ class Category:
             for p in products:
                 self.add_product(p)
 
+    def __str__(self):
+        total_quantity = sum(product.quantity for product in self.products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
     def add_product(self, product):
         if not isinstance(product, Product):
             raise TypeError("Можно добавлять только объекты класса Product")
