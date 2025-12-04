@@ -23,8 +23,10 @@ class Category:
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product):
+        from src.product import Product  # <-- важно!
+
         if not isinstance(product, Product):
-            raise TypeError("Можно добавлять только объекты класса Product")
+            raise TypeError("Можно добавлять только продукты или их наследников")
 
         self.__products.append(product)
         Category.product_count += 1
