@@ -9,3 +9,8 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
+    def __add__(self, other):
+        if type(self) is not type(other):
+            raise TypeError("Складывать можно только товары одного типа")
+        return super().__add__(other)

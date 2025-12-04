@@ -8,3 +8,8 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def __add__(self, other):
+        if type(self) is not type(other):
+            raise TypeError("Складывать можно только товары одного типа")
+        return super().__add__(other)
