@@ -1,27 +1,23 @@
-class Product:
-    name: str
-    description: str
-    quantity: int
+from src.base_product import BaseProduct
+from src.mixins import CreationLogMixin
 
+
+class Product(CreationLogMixin, BaseProduct):
     def __init__(self, name, description, price, quantity):
+        super().__init__(name=name, description=description, price=price, quantity=quantity)
         self.name = name
         self.description = description
         self.quantity = quantity
         self.__price = 0
-        self.price = price  # установка через сеттер
+        self.price = price
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if not isinstance(other, Product):
-            raise TypeError("Можно складывать только продукты и их наследников")
-
+        if type(self) is not type(other):
+            raise TypeError("Можно складывать только продукты одного типа")
         return self.price * self.quantity + other.price * other.quantity
-
-    @classmethod
-    def new_product(cls, data: dict):
-        return cls(**data)
 
     @property
     def price(self):
