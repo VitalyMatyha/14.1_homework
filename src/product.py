@@ -4,19 +4,24 @@ from src.mixins import CreationLogMixin
 
 class Product(CreationLogMixin, BaseProduct):
     def __init__(self, name, description, price, quantity):
-        super().__init__(name=name, description=description, price=price, quantity=quantity)
-        self.name = name
-        self.description = description
-        self.quantity = quantity
         self.__price = 0
-        self.price = price
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        return (
+            f"{self.__class__.__name__}("
+            f"name='{self.name}', "
+            f"description='{self.description}', "
+            f"price={self.price}, "
+            f"quantity={self.quantity})"
+        )
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
         if type(self) is not type(other):
-            raise TypeError("Можно складывать только продукты одного типа")
+            raise TypeError("Нельзя складывать продукты разных классов")
         return self.price * self.quantity + other.price * other.quantity
 
     @property
@@ -29,3 +34,4 @@ class Product(CreationLogMixin, BaseProduct):
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = value
+

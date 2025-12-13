@@ -84,3 +84,15 @@ def test_category_add_product_invalid():
     cat = Category("Test", "Desc")
     with pytest.raises(TypeError):
         cat.add_product("Not a product")
+
+def test_lawngrass_creation():
+    g = LawnGrass("Газонная трава", "Описание", 500, 20, "Россия", "7 дней", "Зеленый")
+    assert g.name == "Газонная трава"
+    assert g.country == "Россия"
+    assert g.price == 500
+    assert g.quantity == 20
+
+def test_lawngrass_addition():
+    g1 = LawnGrass("A", "D", 100, 10, "RU", "7 дней", "Green")
+    g2 = LawnGrass("B", "D", 200, 2, "US", "5 дней", "Dark")
+    assert g1 + g2 == 1000 + 400

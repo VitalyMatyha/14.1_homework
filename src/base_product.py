@@ -2,24 +2,23 @@ from abc import ABC, abstractmethod
 
 
 class BaseProduct(ABC):
-    name: str
-    description: str
-    quantity: int
+    """
+    Абстрактный базовый класс для всех продуктов.
+    Содержит общие атрибуты и контракт поведения.
+    """
 
-    @property
-    @abstractmethod
-    def price(self):
-        pass
-
-    @price.setter
-    @abstractmethod
-    def price(self, value):
-        pass
+    def __init__(self, name: str, description: str, price: float, quantity: int):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
 
     @abstractmethod
-    def __str__(self):
+    def __str__(self) -> str:
+        """Строковое представление продукта"""
         pass
 
     @abstractmethod
     def __add__(self, other):
+        """Сложение продуктов"""
         pass
