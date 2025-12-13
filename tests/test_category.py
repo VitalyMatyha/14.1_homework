@@ -83,3 +83,26 @@ def test_category_counts():
 
     assert Category.category_count == 2
     assert Category.product_count == 3
+
+
+def test_category_creation():
+    product1 = Product("Smartphone1", "Описание", 100, 10)
+    category = Category("Смартфоны", "Smartphones", [product1])
+
+    assert category.name == "Смартфоны"
+    assert len(category.products) == 1
+    assert category.category_count == 1
+
+
+def test_category_add_product():
+    product1 = Product("Smartphone1", "Описание", 100, 10)
+    product2 = Product("Smartphone2", "Описание", 200, 5)
+
+    category = Category("Смартфоны", "Smartphones", [product1])
+    category.add_product(product2)
+
+    assert len(category.products) == 2
+
+def reset_category_counters():
+    Category.category_count = 0
+    Category.product_count = 0

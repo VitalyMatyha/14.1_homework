@@ -43,3 +43,18 @@ def test_price_zero(capfd):
     out, _ = capfd.readouterr()
     assert "Цена не должна быть нулевая или отрицательная" in out
     assert product.price == 100
+
+
+def test_product_creation():
+    product = Product("Product1", "Description", 150, 10)
+    assert product.name == "Product1"
+    assert product.description == "Description"
+    assert product.price == 150
+    assert product.quantity == 10
+
+
+def test_product_addition():
+    product1 = Product("Product1", "Description", 100, 10)
+    product2 = Product("Product2", "Description", 150, 5)
+
+    assert product1 + product2 == 1000 + 750  # 100*10 + 150*5
