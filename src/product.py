@@ -4,6 +4,9 @@ from src.mixins import CreationLogMixin
 
 class Product(CreationLogMixin, BaseProduct):
     def __init__(self, name, description, price, quantity):
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.__price = 0
         super().__init__(name, description, price, quantity)
 
@@ -34,4 +37,3 @@ class Product(CreationLogMixin, BaseProduct):
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = value
-

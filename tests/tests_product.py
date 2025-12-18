@@ -1,3 +1,4 @@
+import pytest
 from src.product import Product
 
 
@@ -58,3 +59,10 @@ def test_product_addition():
     product2 = Product("Product2", "Description", 150, 5)
 
     assert product1 + product2 == 1000 + 750  # 100*10 + 150*5
+
+
+def test_product_zero_quantity_raises_value_error():
+    with pytest.raises(ValueError) as exc:
+        Product("Брак", "Описание", 1000.0, 0)
+
+    assert str(exc.value) == "Товар с нулевым количеством не может быть добавлен"

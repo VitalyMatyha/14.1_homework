@@ -106,3 +106,17 @@ def test_category_add_product():
 def reset_category_counters():
     Category.category_count = 0
     Category.product_count = 0
+
+def test_category_middle_price():
+    p1 = Product("A", "D", 100, 1)
+    p2 = Product("B", "D", 300, 1)
+
+    category = Category("Test", "Desc", [p1, p2])
+
+    assert category.middle_price() == 200
+
+
+def test_category_middle_price_empty():
+    category = Category("Empty", "Desc", [])
+
+    assert category.middle_price() == 0
